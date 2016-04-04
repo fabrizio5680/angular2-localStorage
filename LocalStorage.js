@@ -33,7 +33,6 @@ function LocalStorage(storageKey) {
             get: function () {
                 if (false === this['_' + decoratedPropertyName + '_mapped']) {
                     this['_' + decoratedPropertyName + '_mapped'] = instances.length;
-                    //first registration triggers a setting to localStorage value
                     values[instances.length] = storageValue;
                     oldJSONValues[instances.length] = storageValueJSON;
                     instances.push(this);
@@ -43,11 +42,9 @@ function LocalStorage(storageKey) {
             set: function (newValue) {
                 if (false === this['_' + decoratedPropertyName + '_mapped']) {
                     this['_' + decoratedPropertyName + '_mapped'] = instances.length;
-                    //first registration triggers a setting to localStorage value
                     values[instances.length] = storageValue;
                     oldJSONValues[instances.length] = storageValueJSON;
                     instances.push(this);
-                    //first 'set' call is ignored if we have already a value from the localStorage
                     if (storageValue) {
                         return;
                     }
@@ -71,3 +68,4 @@ function LocalStorage(storageKey) {
     };
 }
 exports.LocalStorage = LocalStorage;
+//# sourceMappingURL=LocalStorage.js.map
